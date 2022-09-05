@@ -9,7 +9,7 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 # $(NAME): ${OBJS}
-$(NAME):
+$(NAME): $(SRCS)
 	$(CC) $(SRCS) -L. -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 # .c.o :
