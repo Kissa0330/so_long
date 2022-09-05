@@ -6,34 +6,32 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/05 14:00:51 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/05 16:47:12 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(void)
+int	main(void)
 {
-	void *mlx;
-	void *mlx_win;
-	int i;
-	int j;
-	int width = 500;
-	int height = 500;
+	t_data	img;
+	t_vars	vars;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, width, height, "so_long");
-	i = 0;
-	while (i < width)
+	vars.mlx = mlx_init();
+	vars.x = 800;
+	vars.y = 800;
+	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, key_press_event, &vars);
+	img.img = mlx_new_image(vars.mlx, vars.x, vars.y);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	for (int i = 0; i < 30; i++)
 	{
-		j = 0;
-		while (j < height)
+		for (int j = 0; j < 30; j++)
 		{
-			mlx_pixel_put(mlx, mlx_win, i, j, 127);
-			j++;
+			my_mlx_pixel_put(&img, i, j, 0xFF00FF);
 		}
-		i++;
+		
 	}
-	mlx_loop(mlx);
-	return (1);
+	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_loop(vars.mlx);
 }

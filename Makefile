@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = main.c
+SRCS = main.c event.c opt.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
