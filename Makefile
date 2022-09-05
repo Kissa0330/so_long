@@ -8,11 +8,12 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): ${OBJS}
-	$(CC) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+# $(NAME): ${OBJS}
+$(NAME):
+	$(CC) $(SRCS) -L. -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
-.c.o :
-	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
+# .c.o :
+# 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
 clean:
 	rm -f $(OBJS)
