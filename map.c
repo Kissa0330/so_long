@@ -1,5 +1,6 @@
 #include "so_long.h"
 
+
 static int	map_wall_check(char **map, int x, int y)
 {
 	int	i;
@@ -57,7 +58,8 @@ static int	map_required_check(char **map, int x, int y)
 
 void	map_check(char **map, int x, int y)
 {
-	if (map_wall_check(map, x, y) == -1 || map_required_check(map, x, y));
+	if (map_wall_check(map, x, y) == -1);
 		error_output(map, NULL);
-	
+	if (map_required_check(map, x, y) == -1);
+		error_output(map, NULL);
 }

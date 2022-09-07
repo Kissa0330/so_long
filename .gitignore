@@ -1,2 +1,5 @@
 .DS_Store
-mlx
+*.o
+*.a
+libft/*.o
+libft/*.a

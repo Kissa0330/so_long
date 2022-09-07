@@ -10,15 +10,21 @@ all: $(NAME)
 
 # $(NAME): ${OBJS}
 $(NAME): $(SRCS)
-	$(CC) $(SRCS) -L. -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	make -C libft
+	cp ./libft/libft.a .
+	$(CC) $(SRCS) -L. -lmlx -lft -framework OpenGL -framework AppKit -o $(NAME)
 
 # .c.o :
 # 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}
 
+
 clean:
+	make -C libft clean
 	rm -f $(OBJS)
 
 fclean: clean
+	make -C libft fclean
+	rm -f libft.a
 	rm -f $(NAME)
 
 re: fclean all
