@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakano   <rtakano@student.42.fr    >      +#+  +:+       +#+        */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:48:07 by rtakano           #+#    #+#             */
-/*   Updated: 2022/07/01 00:42:03 by rtakano          ###   ########.fr       */
+/*   Updated: 2022/09/07 13:54:25 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*read_file(int fd, char *static_str)
 	if (!buf)
 		return (judge_null_free_strs(static_str, NULL));
 	buf[BUFFER_SIZE] = '\0';
-	while (!ft_strchr(static_str, '\n') && read_res != 0)
+	while (!ft_strchr_gnl(static_str, '\n') && read_res != 0)
 	{
 		read_res = read(fd, buf, BUFFER_SIZE);
 		if (read_res == -1)
@@ -68,9 +68,9 @@ static char	*update_static_str(char *static_str)
 	char	*line_pointer;
 	char	*new_static_str;
 
-	if (!ft_strchr(static_str, '\n'))
+	if (!ft_strchr_gnl(static_str, '\n'))
 		return (judge_null_free_strs(static_str, NULL));
-	line_pointer = ft_strchr(static_str, '\n') + 1;
+	line_pointer = ft_strchr_gnl(static_str, '\n') + 1;
 	new_static_str = ft_strdup(line_pointer);
 	free(static_str);
 	return (new_static_str);

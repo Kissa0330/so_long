@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 19:48:24 by rtakano           #+#    #+#             */
-/*   Updated: 2022/09/07 13:21:46 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/07 13:53:27 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,17 @@ char	*judge_null_free_strs(char *s1, char *s2)
 	if (s2)
 		free(s2);
 	return (NULL);
+}
+
+char	*ft_strchr_gnl(char *s, int c)
+{
+	if (s == NULL)
+		return (NULL);
+	while (*s != (char)c)
+	{
+		if (*s == '\0')
+			return (NULL);
+		s++;
+	}
+	return (s);
 }

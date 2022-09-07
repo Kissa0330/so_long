@@ -6,14 +6,13 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/11 00:48:21 by rtakano           #+#    #+#             */
-/*   Updated: 2022/09/07 13:04:54 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/07 13:53:07 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include "get_next_line_bonus.h"
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -53,5 +52,6 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
+char			*get_next_line(int fd);
 
 #endif

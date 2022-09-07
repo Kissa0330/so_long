@@ -1,5 +1,6 @@
 .DS_Store
 *.o
 *.a
+so_long
 libft/*.o
 libft/*.a
