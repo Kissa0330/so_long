@@ -16,11 +16,18 @@ typedef struct	s_vars {
 	int		y;
 }				t_vars;
 
-#include "mlx.h"
-#include <stdlib.h>
+typedef struct	s_map {
+	char	**map;
+	int		x;
+	int		y;
+}				t_map;
+
+# include "mlx.h"
+# include "./libft/libft.h"
+# include <stdlib.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_press_event(int keycode, t_vars *vars);
-void	close(t_vars *vars);
+void	close_win(t_vars *vars);
 
 #endif

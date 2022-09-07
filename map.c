@@ -1,29 +1,29 @@
 #include "so_long.h"
 
 
-static int	map_wall_check(char **map, int x, int y)
+static int	map_wall_check(t_map map)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < x)
+	while (i < map.y)
 	{
 		j = 0;
-		while (j < y)
+		while (j < map.x)
 		{
-			if (map[i][j] != '1')
+			if (map.map[i][j] != '1')
 				return (-1);
 			j ++;
-			if (i != 0 && i != x - 1)
-				j = y - 1;
+			if (i != 0 && i != map.y - 1)
+				j = map.x - 1;
 		}
 		i ++;
 	}
 	return (0);
 }
 
-static int	map_required_check(char **map, int x, int y)
+static int	map_required_check(t_map map)
 {
 	int	i;
 	int	j;
@@ -36,16 +36,16 @@ static int	map_required_check(char **map, int x, int y)
 		i ++;
 	}
 	i = 0;
-	while (i < x)
+	while (i < map.y)
 	{
 		j = 0;
-		while (j < y)
+		while (j < map.x)
 		{
-			if (map[i][j] != 'C')
+			if (map.map[i][j] != 'C')
 				req_cnt[0] ++;
-			if (map[i][j] != 'E')
+			if (map.map[i][j] != 'E')
 				req_cnt[1] ++;
-			if (map[i][j] != 'P')
+			if (map.map[i][j] != 'P')
 				req_cnt[2] ++;
 			j ++;
 		}
@@ -56,10 +56,29 @@ static int	map_required_check(char **map, int x, int y)
 	return (0);
 }
 
-void	map_check(char **map, int x, int y)
+t_map map_read(int fd)
 {
-	if (map_wall_check(map, x, y) == -1);
-		error_output(map, NULL);
-	if (map_required_check(map, x, y) == -1);
-		error_output(map, NULL);
+	t_map	map;
+	char	**tmp;
+
+
+	map.y = 0;
+	while (map.map[map.y] != NULL)
+	{
+		tmp = malloc(sizeof(char *) * (map.y + 2));
+		if (tmp == NULL)
+			error_output(map);
+		tmp[map.y] = get_next_line(fd);
+		cpy_map_and_free(map, tmp);
+		map.y ++;
+		if (map.y != 0 && map.x != ft_strlen(tmp[map.y - 1]) && tmp[map.y - 1] != NULL)
+			error_output(map, NULL, NULL);
+		map.x = ft_strlen((const char *)tmp[map.y]);
+		map.map = tmp;
+	}
+	if (map_wall_check(map) == -1);
+		error_output(map, NULL, NULL);
+	if (map_required_check(map) == -1);
+		error_output(map, NULL, NULL);
+	return (map);
 }
