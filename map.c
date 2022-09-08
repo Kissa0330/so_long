@@ -56,24 +56,38 @@ static int	map_required_check(t_map map)
 	return (0);
 }
 
-void	cpy_map_and_free(t_map *map)
+static void	del_line_char(char *str)
+{
+	char	*line_point;
+
+	if (str == NULL)
+		return ;
+	line_point = ft_strchr(str, '\n');
+	if (line_point != NULL)
+		line_point[0] = '\0';
+}
+
+static void	read_map_and_free(t_map *map, int fd)
 {
 	char	**tmp;
 	int		i;
-	int		j;
 
 	tmp = malloc(sizeof(char *) * ((*map).y) + 1);
 	if (tmp == NULL)
 		error_output(map, NULL, NULL);
 	tmp[(*map).y] = NULL;
+	tmp[(*map).y - 1] = get_next_line(fd);
 	i = 0;
-	while ((*map).map[i] != NULL)
+	if ((*map).map != NULL)
 	{
-		j = 0;
-		tmp[i] = (*map).map[i];
-		i ++;
+		while ((*map).map[i] != NULL)
+		{
+			tmp[i] = (*map).map[i];
+			i ++;
+		}
+		free((*map).map);
 	}
-	free((*map).map);
+	del_line_char(tmp[i]);
 	(*map).map = tmp;
 }
 
@@ -82,31 +96,32 @@ t_map	map_read(int fd)
 	t_map	map;
 
 	map.y = 1;
-	map.map = malloc(sizeof(char *) * ((map).y) + 1);
-	if (map.map == NULL)
-		error_output(NULL, NULL, NULL);
-	map.map[map.y - 1] = get_next_line(fd);
-	map.map[map.y] = NULL;
+	map.map = NULL;
+	read_map_and_free(&map, fd);
+	map.x = ft_strlen((const char *)map.map[map.y - 1]);
 	while (map.map[map.y - 1] != NULL)
 	{
 		map.y ++;
-		cpy_map_and_free(&map);
-		map.map[map.y - 1] = get_next_line(fd);
-		// if (map.x != (int)ft_strlen(map.map[map.y - 1]) && map.map[map.y - 1] != NULL)
-		// 	error_output(&map, NULL, NULL);
-		// map.x = ft_strlen((const char *)map.map[map.y]);
+		read_map_and_free(&map, fd);
+		if (map.map[map.y - 1] != NULL)
+		{
+			if (map.x != (int)ft_strlen(map.map[map.y - 1]) && map.map[map.y - 1] != NULL)
+				error_output(&map, NULL, NULL);
+			map.x = ft_strlen(map.map[map.y - 1]);
+		}
 	}
 	// if (map_wall_check(map) == -1)
 	// 	error_output(&map, NULL, NULL);
 	// if (map_required_check(map) == -1)
 	// 	error_output(&map, NULL, NULL);
-	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割
+	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割]
 	return (map);
 }
 
 int	main()
 {
 	t_map	map;
+	char	*line;
 	int		i;
 	int		fd;
 
@@ -114,8 +129,11 @@ int	main()
 	map = map_read(fd);
 	i = 0;
 	while (map.map[i] != NULL)
+	// while (line != NULL)
 	{
-		printf("%s", map.map[i]);
+		// line = get_next_line(fd);
+		printf("%s\n", map.map[i]);
+		// printf("%s\n", line);
 		i ++;
 	}
 	return (0);
