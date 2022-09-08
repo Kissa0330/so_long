@@ -25,9 +25,12 @@ typedef struct	s_map {
 # include "mlx.h"
 # include "./libft/libft.h"
 # include <stdlib.h>
+# include <fcntl.h>
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		key_press_event(int keycode, t_vars *vars);
+void	free_structs(t_map *map, t_vars *var, t_data *data);
+void	error_output(t_map *map, t_vars *var, t_data *data);
 void	close_win(t_vars *vars);
 
 #endif

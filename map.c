@@ -1,5 +1,5 @@
 #include "so_long.h"
-
+#include <stdio.h>
 
 static int	map_wall_check(t_map map)
 {
@@ -56,29 +56,67 @@ static int	map_required_check(t_map map)
 	return (0);
 }
 
-t_map map_read(int fd)
+void	cpy_map_and_free(t_map *map)
+{
+	char	**tmp;
+	int		i;
+	int		j;
+
+	tmp = malloc(sizeof(char *) * ((*map).y) + 1);
+	if (tmp == NULL)
+		error_output(map, NULL, NULL);
+	tmp[(*map).y] = NULL;
+	i = 0;
+	while ((*map).map[i] != NULL)
+	{
+		j = 0;
+		tmp[i] = (*map).map[i];
+		i ++;
+	}
+	free((*map).map);
+	(*map).map = tmp;
+}
+
+t_map	map_read(int fd)
 {
 	t_map	map;
-	char	**tmp;
 
-
-	map.y = 0;
-	while (map.map[map.y] != NULL)
+	map.y = 1;
+	map.map = malloc(sizeof(char *) * ((map).y) + 1);
+	if (map.map == NULL)
+		error_output(NULL, NULL, NULL);
+	map.map[map.y - 1] = get_next_line(fd);
+	map.map[map.y] = NULL;
+	while (map.map[map.y - 1] != NULL)
 	{
-		tmp = malloc(sizeof(char *) * (map.y + 2));
-		if (tmp == NULL)
-			error_output(map);
-		tmp[map.y] = get_next_line(fd);
-		cpy_map_and_free(map, tmp);
 		map.y ++;
-		if (map.y != 0 && map.x != ft_strlen(tmp[map.y - 1]) && tmp[map.y - 1] != NULL)
-			error_output(map, NULL, NULL);
-		map.x = ft_strlen((const char *)tmp[map.y]);
-		map.map = tmp;
+		cpy_map_and_free(&map);
+		map.map[map.y - 1] = get_next_line(fd);
+		// if (map.x != (int)ft_strlen(map.map[map.y - 1]) && map.map[map.y - 1] != NULL)
+		// 	error_output(&map, NULL, NULL);
+		// map.x = ft_strlen((const char *)map.map[map.y]);
 	}
-	if (map_wall_check(map) == -1);
-		error_output(map, NULL, NULL);
-	if (map_required_check(map) == -1);
-		error_output(map, NULL, NULL);
+	// if (map_wall_check(map) == -1)
+	// 	error_output(&map, NULL, NULL);
+	// if (map_required_check(map) == -1)
+	// 	error_output(&map, NULL, NULL);
+	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割
 	return (map);
+}
+
+int	main()
+{
+	t_map	map;
+	int		i;
+	int		fd;
+
+	fd = open("map.bar", O_RDONLY);
+	map = map_read(fd);
+	i = 0;
+	while (map.map[i] != NULL)
+	{
+		printf("%s", map.map[i]);
+		i ++;
+	}
+	return (0);
 }
