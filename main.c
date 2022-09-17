@@ -6,18 +6,30 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/17 18:58:57 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 00:40:12 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
 int	main(void)
 {
 	t_data	img;
 	t_vars	vars;
+	void	*image;
+	int		img_width;
+	int		img_height;
 
 	vars.mlx = mlx_init();
+	image = mlx_xpm_file_to_image(vars.mlx, "./test.xpm", &img_width, &img_height);
 	vars.x = 800;
 	vars.y = 800;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
@@ -34,5 +46,6 @@ int	main(void)
 		
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
+	mlx_put_image_to_window(vars.mlx, vars.win, image, 31, 31);
 	mlx_loop(vars.mlx);
 }

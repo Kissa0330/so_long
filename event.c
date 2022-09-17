@@ -13,3 +13,4 @@ int	close_win(t_vars *vars)
 	exit(EXIT_SUCCESS);
 	return (0);
 }
+
