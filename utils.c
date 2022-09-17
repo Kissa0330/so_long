@@ -1,18 +1,23 @@
 #include "so_long.h"
-
+#include <stdio.h>
 void	free_structs(t_map *map, t_vars *var, t_data *data)
 {
 	int	i;
 
-	if ((*data).img != NULL && data != NULL)
-		free((*data).img);
-	if ((*data).addr != NULL && data != NULL)
-		free((*data).addr);
-	if ((*var).mlx != NULL && var != NULL)
-		free((*var).mlx);
-	if ((*var).win != NULL && var != NULL)
-		free((*var).win);
-	i = 0;
+	if (data != NULL)
+	{
+		if ((*data).img != NULL)
+			free((*data).img);
+		if ((*data).addr != NULL)
+			free((*data).addr);
+	}
+	if (var != NULL)
+	{
+		if ((*var).mlx != NULL)
+			free((*var).mlx);
+		if ((*var).win != NULL)
+			free((*var).win);
+	}
 	while (map != NULL && (*map).map[i] != NULL)
 	{
 		free((*map).map[i]);

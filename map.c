@@ -114,7 +114,9 @@ t_map	map_read(int fd)
 	// 	error_output(&map, NULL, NULL);
 	// if (map_required_check(map) == -1)
 	// 	error_output(&map, NULL, NULL);
+
 	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割]
+	//mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
 	return (map);
 }
 
