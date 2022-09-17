@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/18 00:40:12 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 01:07:09 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(void)
 	int		img_height;
 
 	vars.mlx = mlx_init();
-	image = mlx_xpm_file_to_image(vars.mlx, "./test.xpm", &img_width, &img_height);
+	image = mlx_xpm_file_to_image(vars.mlx, "./Cliff.xpm", &img_width, &img_height);
 	vars.x = 800;
 	vars.y = 800;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
