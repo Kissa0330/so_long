@@ -7,15 +7,15 @@ static int	map_wall_check(t_map map)
 	int	j;
 
 	i = 0;
-	while (i < map.y)
+	while (map.map[i] != NULL)
 	{
 		j = 0;
 		while (j < map.x)
 		{
 			if (map.map[i][j] != '1')
 				return (-1);
-			j ++;
-			if (i != 0 && i != map.y - 1)
+			j++;
+			if (i != 0 && i != map.y - 1 && j == 1)
 				j = map.x - 1;
 		}
 		i ++;
@@ -36,16 +36,16 @@ static int	map_required_check(t_map map)
 		i ++;
 	}
 	i = 0;
-	while (i < map.y)
+	while (map.map[i] != NULL)
 	{
 		j = 0;
 		while (j < map.x)
 		{
-			if (map.map[i][j] != 'C')
+			if (map.map[i][j] == 'C')
 				req_cnt[0] ++;
-			if (map.map[i][j] != 'E')
+			if (map.map[i][j] == 'E')
 				req_cnt[1] ++;
-			if (map.map[i][j] != 'P')
+			if (map.map[i][j] == 'P')
 				req_cnt[2] ++;
 			j ++;
 		}
@@ -110,11 +110,10 @@ t_map	map_read(int fd)
 			map.x = ft_strlen(map.map[map.y - 1]);
 		}
 	}
-	// if (map_wall_check(map) == -1)
-	// 	error_output(&map, NULL, NULL);
-	// if (map_required_check(map) == -1)
-	// 	error_output(&map, NULL, NULL);
-
+	if (map_wall_check(map) == -1)
+		error_output(&map, NULL, NULL);
+	if (map_required_check(map) == -1)
+		error_output(&map, NULL, NULL);
 	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割]
 	//mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
 	return (map);

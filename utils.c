@@ -1,5 +1,5 @@
 #include "so_long.h"
-#include <stdio.h>
+
 void	free_structs(t_map *map, t_vars *var, t_data *data)
 {
 	int	i;
