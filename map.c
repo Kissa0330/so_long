@@ -114,8 +114,8 @@ t_map	map_read(int fd)
 		error_output(&map, NULL, NULL);
 	if (map_required_check(map) == -1)
 		error_output(&map, NULL, NULL);
-	// mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割]
-	//mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
+	//TODO mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割、地図が指定されている文字のみで構成されているかのチェック
+	//MEMO mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
 	return (map);
 }
 
@@ -130,11 +130,8 @@ int	main()
 	map = map_read(fd);
 	i = 0;
 	while (map.map[i] != NULL)
-	// while (line != NULL)
 	{
-		// line = get_next_line(fd);
 		printf("%s\n", map.map[i]);
-		// printf("%s\n", line);
 		i ++;
 	}
 	return (0);
