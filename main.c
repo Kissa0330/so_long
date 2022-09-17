@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/05 16:47:12 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/17 18:58:57 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(void)
 	vars.y = 800;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
 	mlx_hook(vars.win, 2, 1L<<0, key_press_event, &vars);
+	mlx_hook(vars.win, 17, 0L, close_win, &vars);
 	img.img = mlx_new_image(vars.mlx, vars.x, vars.y);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	for (int i = 0; i < 30; i++)
