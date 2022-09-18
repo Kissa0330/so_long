@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:24:50 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/18 16:26:00 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 16:52:02 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	free_structs(t_map *map, t_vars *var, t_data *data)
 		if ((*var).win != NULL)
 			free((*var).win);
 	}
+	i = 0;
 	while (map != NULL && (*map).map[i] != NULL)
 	{
 		free((*map).map[i]);

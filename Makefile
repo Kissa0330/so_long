@@ -2,7 +2,7 @@ NAME = so_long
 SRCS = main.c event.c opt.c map.c utils.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
-# CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 .PHONY : all clean fclean re
 

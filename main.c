@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/18 16:36:44 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 16:52:21 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ int	main(int argc, char *argv[])
 	int		img_height;
 	int		fd;
 
+	(void)argc;
 	if (argv[1] == NULL)
 		error_output(NULL, NULL, NULL);
 	fd = open(argv[1], O_RDONLY);
 	map = map_read(fd);
 	vars.mlx = mlx_init();
-	image = mlx_xpm_file_to_image(vars.mlx, "./Cliff.xpm", &img_width, &img_height);
+	image = mlx_xpm_file_to_image(vars.mlx, "./xpm/Cliff.xpm", &img_width, &img_height);
 	vars.x = map.x * 16;
 	vars.y = map.y * 16;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
