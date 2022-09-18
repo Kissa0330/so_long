@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
+/*   Updated: 2022/09/18 16:27:08 by takanoraika      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	map_wall_check(t_map map)
@@ -41,11 +53,11 @@ static int	map_required_check(t_map map)
 		while (j < map.x)
 		{
 			if (map.map[i][j] == 'C')
-				req_cnt[0] ++;
+				req_cnt[0]++;
 			else if (map.map[i][j] == 'E')
-				req_cnt[1] ++;
+				req_cnt[1]++;
 			else if (map.map[i][j] == 'P')
-				req_cnt[2] ++;
+				req_cnt[2]++;
 			else if (map.map[i][j] != '1' && map.map[i][j] != '0')
 				return (-1);
 			j ++;
@@ -115,25 +127,27 @@ t_map	map_read(int fd)
 		error_output(&map, NULL, NULL);
 	if (map_required_check(map) == -1)
 		error_output(&map, NULL, NULL);
-	//TODO mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割、地図が指定されている文字のみで構成されているかのチェック
-	//MEMO mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
 	return (map);
 }
 
-// int	main()
-// {
-// 	t_map	map;
-// 	char	*line;
-// 	int		i;
-// 	int		fd;
+/*
+//TODO mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理、関数の分割、地図が指定されている文字のみで構成されているかのチェック
+//MEMO mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
+int	main()
+{
+	t_map	map;
+	char	*line;
+	int		i;
+	int		fd;
 
-// 	fd = open("map.bar", O_RDONLY);
-// 	map = map_read(fd);
-// 	i = 0;
-// 	while (map.map[i] != NULL)
-// 	{
-// 		printf("%s\n", map.map[i]);
-// 		i ++;
-// 	}
-// 	return (0);
-// }
+	fd = open("map.bar", O_RDONLY);
+	map = map_read(fd);
+	i = 0;
+	while (map.map[i] != NULL)
+	{
+		printf("%s\n", map.map[i]);
+		i ++;
+	}
+	return (0);
+}
+*/

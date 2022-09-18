@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/18 16:16:02 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 16:30:04 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	main(int argc, char *argv[])
@@ -37,7 +37,7 @@ int	main(int argc, char *argv[])
 	vars.x = map.x * 16;
 	vars.y = map.y * 16;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
-	mlx_hook(vars.win, 2, 1L<<0, key_press_event, &vars);
+	mlx_hook(vars.win, 2, 1L << 0, key_press_event, &vars);
 	mlx_hook(vars.win, 17, 0L, close_win, &vars);
 	img.img = mlx_new_image(vars.mlx, vars.x, vars.y);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);

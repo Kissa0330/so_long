@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/18 16:24:50 by takanoraika       #+#    #+#             */
+/*   Updated: 2022/09/18 16:26:00 by takanoraika      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	free_structs(t_map *map, t_vars *var, t_data *data)
@@ -28,6 +40,6 @@ void	free_structs(t_map *map, t_vars *var, t_data *data)
 void	error_output(t_map *map, t_vars *var, t_data *data)
 {
 	free_structs(map, var, data);
-	write(2 ,"Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
