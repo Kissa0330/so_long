@@ -42,10 +42,12 @@ static int	map_required_check(t_map map)
 		{
 			if (map.map[i][j] == 'C')
 				req_cnt[0] ++;
-			if (map.map[i][j] == 'E')
+			else if (map.map[i][j] == 'E')
 				req_cnt[1] ++;
-			if (map.map[i][j] == 'P')
+			else if (map.map[i][j] == 'P')
 				req_cnt[2] ++;
+			else if (map.map[i][j] != '1' && map.map[i][j] != '0')
+				return (-1);
 			j ++;
 		}
 		i ++;

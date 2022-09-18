@@ -6,12 +6,11 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 00:53:52 by rtakano           #+#    #+#             */
-/*   Updated: 2022/09/07 13:31:47 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/18 16:22:41 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
