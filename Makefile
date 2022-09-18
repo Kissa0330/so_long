@@ -1,8 +1,8 @@
 NAME = so_long
-SRCS = main.c event.c opt.c
+SRCS = main.c event.c opt.c map.c utils.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+# CFLAGS = -Wall -Werror -Wextra
 
 .PHONY : all clean fclean re
 
@@ -12,7 +12,7 @@ all: $(NAME)
 $(NAME): $(SRCS)
 	make -C libft
 	cp ./libft/libft.a .
-	$(CC) $(SRCS) -L. -lmlx -lft -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) -L. -lmlx -lft -framework OpenGL -framework AppKit -o $(NAME)
 
 # .c.o :
 # 	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o}

@@ -32,5 +32,6 @@ int		key_press_event(int keycode, t_vars *vars);
 void	free_structs(t_map *map, t_vars *var, t_data *data);
 void	error_output(t_map *map, t_vars *var, t_data *data);
 int		close_win(t_vars *vars);
+t_map	map_read(int fd);
 
 #endif

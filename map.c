@@ -1,5 +1,4 @@
 #include "so_long.h"
-#include <stdio.h>
 
 static int	map_wall_check(t_map map)
 {
@@ -119,20 +118,20 @@ t_map	map_read(int fd)
 	return (map);
 }
 
-int	main()
-{
-	t_map	map;
-	char	*line;
-	int		i;
-	int		fd;
+// int	main()
+// {
+// 	t_map	map;
+// 	char	*line;
+// 	int		i;
+// 	int		fd;
 
-	fd = open("map.bar", O_RDONLY);
-	map = map_read(fd);
-	i = 0;
-	while (map.map[i] != NULL)
-	{
-		printf("%s\n", map.map[i]);
-		i ++;
-	}
-	return (0);
-}
+// 	fd = open("map.bar", O_RDONLY);
+// 	map = map_read(fd);
+// 	i = 0;
+// 	while (map.map[i] != NULL)
+// 	{
+// 		printf("%s\n", map.map[i]);
+// 		i ++;
+// 	}
+// 	return (0);
+// }
