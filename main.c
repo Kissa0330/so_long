@@ -6,17 +6,17 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 19:04:49 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:23:06 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
+
 static void	vars_init(t_vars *vars, char *path)
 {
 	int	fd;
 
-	if(path_check(path) == -1)
+	if (path_check(path) == -1)
 		error_output();
 	fd = open(path, O_RDONLY);
 	if (fd < 0)

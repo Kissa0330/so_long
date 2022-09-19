@@ -6,13 +6,13 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:24:50 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 10:41:53 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:22:37 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	error_output()
+void	error_output(void)
 {
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);

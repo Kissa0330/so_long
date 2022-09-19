@@ -6,12 +6,12 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:53:32 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 18:55:09 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:25:30 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
+
 void	create_bg(t_vars vars)
 {
 	t_data	img;
@@ -52,7 +52,7 @@ void	draw_map(t_vars *vars, t_map map)
 			if (map.map[i][j] == '0')
 			{
 				j ++;
-				continue;
+				continue ;
 			}
 			if (map.map[i][j] == '1')
 				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Cliff.xpm", &w, &h);

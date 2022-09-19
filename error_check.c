@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:46:11 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 10:57:56 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:22:16 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	path_check(char *path)
 
 	i = 0;
 	if (path == NULL)
-		return(-1);
-	if(path[0] == '.')
+		return (-1);
+	if (path[0] == '.')
 		return (-1);
 	while (path[i] != '\0')
 	{
