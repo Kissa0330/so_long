@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 10:41:01 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 10:57:25 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	main(int argc, char *argv[])
 	int		fd;
 
 	(void)argc;
-	if (argv[1] == NULL)
+	if(path_check(argv[1]) == -1)
 		error_output();
 	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		error_output();
 	map = map_read(fd);
 	vars.mlx = mlx_init();
 	vars.x = (map.x) * 16;

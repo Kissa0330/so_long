@@ -37,5 +37,6 @@ int		key_press_event(int keycode, t_vars *vars);
 void	error_output();
 int		close_win(t_vars *vars);
 t_map	map_read(int fd);
+int		path_check(char *path);
 
 #endif
