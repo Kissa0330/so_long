@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtakano   <rtakano@student.42.fr    >      +#+  +:+       +#+        */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 21:13:43 by rtakano           #+#    #+#             */
-/*   Updated: 2022/04/10 11:50:34 by rtakano          ###   ########.fr       */
+/*   Updated: 2022/09/19 21:10:33 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ size_t	ft_strlen(const char *str)
 	while (*str++ != '\0')
 	{
 		n++;
+		if (SIZE_T_MAX == n)
+			return (n);
 	}
 	return (n);
 }
