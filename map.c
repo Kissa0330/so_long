@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 21:09:17 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 21:15:06 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ static void	read_map_and_free(t_map *map, int fd)
 	map->map = tmp;
 }
 
+static void	map_check(t_map map)
+{
+	if (map_wall_check(map) == -1)
+		error_output();
+	if (map_required_check(map) == -1)
+		error_output();
+	// if (map_is_goal_check(map) == -1)
+	// 	error_output();
+}
+
 t_map	map_read(int fd)
 {
 	t_map	map;
@@ -71,31 +81,6 @@ t_map	map_read(int fd)
 			map.x = ft_strlen(map.map[map.y - 1]);
 		}
 	}
-	if (map_wall_check(map) == -1)
-		error_output();
-	if (map_required_check(map) == -1)
-		error_output();
+	map_check(map);
 	return (map);
 }
-
-/*
-//TODO mapがゴール可能かどうかを確かめる処理,xがintを超えた場合のエラー処理
-//MEMO mapのゴール可否を判断する際は迷路を解くアルゴリズムなどが役に立つかも？
-int	main()
-{
-	t_map	map;
-	char	*line;
-	int		i;
-	int		fd;
-
-	fd = open("map.bar", O_RDONLY);
-	map = map_read(fd);
-	i = 0;
-	while (map.map[i] != NULL)
-	{
-		printf("%s\n", map.map[i]);
-		i ++;
-	}
-	return (0);
-}
-*/
