@@ -23,6 +23,7 @@ typedef struct	s_vars {
 	int		ply_x;
 	int		ply_y;
 	int		C_cnt;
+	int		move_cnt;
 	t_map	map;
 }				t_vars;
 
@@ -43,6 +44,10 @@ int		path_check(char *path);
 int		map_wall_check(t_map map);
 int		map_required_check(t_map map);
 void	move_up(t_vars *vars, t_map map);
+void	move_left(t_vars *vars, t_map map);
+void	move_right(t_vars *vars, t_map map);
+void	move_down(t_vars *vars, t_map map);
 void	overwrite_bg(t_vars *vars, int x, int y);
+void	draw_ply(t_vars vars, int x, int y);
 
 #endif

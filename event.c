@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:27:48 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 14:23:45 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 19:20:00 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,14 @@ int	key_press_event(int keycode, t_vars *vars)
 {
 	if (keycode == 53)
 		close_win(vars);
-	if (keycode == 13)
+	else if (keycode == 13)
 		move_up(vars, vars->map);
+	else if (keycode == 0)
+		move_left(vars, vars->map);
+	else if (keycode == 2)
+		move_right(vars, vars->map);
+	else if (keycode == 1)
+		move_down(vars, vars->map);
 	return (0);
 }
 
