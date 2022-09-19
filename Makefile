@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = main.c event.c opt.c map.c utils.c graphic_init.c error_check.c map_error_check.c
+SRCS = main.c event.c opt.c map.c utils.c graphic_init.c graphic_in_game.c error_check.c map_error_check.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra

@@ -42,5 +42,6 @@ int		path_check(char *path);
 int		map_wall_check(t_map map);
 int		map_required_check(t_map map);
 void	move_up(t_vars *vars, t_map map);
+void	overwrite_bg(t_vars *vars, int x, int y);
 
 #endif
