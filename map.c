@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/18 16:27:08 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 10:41:23 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	read_map_and_free(t_map *map, int fd)
 
 	tmp = malloc(sizeof(char *) * ((*map).y) + 1);
 	if (tmp == NULL)
-		error_output(map, NULL, NULL);
+		error_output();
 	tmp[(*map).y] = NULL;
 	tmp[(*map).y - 1] = get_next_line(fd);
 	i = 0;
@@ -119,14 +119,14 @@ t_map	map_read(int fd)
 		if (map.map[map.y - 1] != NULL)
 		{
 			if (map.x != (int)ft_strlen(map.map[map.y - 1]) && map.map[map.y - 1] != NULL)
-				error_output(&map, NULL, NULL);
+				error_output();
 			map.x = ft_strlen(map.map[map.y - 1]);
 		}
 	}
 	if (map_wall_check(map) == -1)
-		error_output(&map, NULL, NULL);
+		error_output();
 	if (map_required_check(map) == -1)
-		error_output(&map, NULL, NULL);
+		error_output();
 	return (map);
 }
 

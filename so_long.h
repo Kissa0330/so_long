@@ -14,6 +14,8 @@ typedef struct	s_vars {
 	void	*win;
 	int		x;
 	int		y;
+	int		ply_x;
+	int		ply_y;
 }				t_vars;
 
 typedef struct	s_map {
@@ -29,10 +31,10 @@ typedef struct	s_map {
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	create_bg(t_vars vars);
-void	draw_map(t_vars vars, t_map map);
+void	draw_map(t_vars *vars, t_map map);
+void	event_hooks(t_vars vars);
 int		key_press_event(int keycode, t_vars *vars);
-void	free_structs(t_map *map, t_vars *var, t_data *data);
-void	error_output(t_map *map, t_vars *var, t_data *data);
+void	error_output();
 int		close_win(t_vars *vars);
 t_map	map_read(int fd);
 
