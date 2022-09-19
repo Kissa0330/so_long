@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:25:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 14:25:55 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:59:25 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,41 @@ int	map_wall_check(t_map map)
 	return (0);
 }
 
+static int	cnt_obj(char map, t_cnts *cnts)
+{
+	if (map == 'C')
+		cnts->c_cnt++;
+	else if (map == 'E')
+		cnts->e_cnt++;
+	else if (map == 'P')
+		cnts->p_cnt++;
+	else if (map != '1' && map != '0')
+		return (-1);
+	return (0);
+}
+
 int	map_required_check(t_map map)
 {
-	int	i;
-	int	j;
-	int	req_cnt[3];
+	int		i;
+	int		j;
+	t_cnts	cnts;
 
 	i = 0;
-	while (i < 3)
-	{
-		req_cnt[i] = 0;
-		i ++;
-	}
-	i = 0;
+	cnts.c_cnt = 0;
+	cnts.e_cnt = 0;
+	cnts.p_cnt = 0;
 	while (map.map[i] != NULL)
 	{
 		j = 0;
 		while (j < map.x)
 		{
-			if (map.map[i][j] == 'C')
-				req_cnt[0]++;
-			else if (map.map[i][j] == 'E')
-				req_cnt[1]++;
-			else if (map.map[i][j] == 'P')
-				req_cnt[2]++;
-			else if (map.map[i][j] != '1' && map.map[i][j] != '0')
+			if (cnt_obj(map.map[i][j], &cnts) == -1)
 				return (-1);
 			j ++;
 		}
 		i ++;
 	}
-	if (req_cnt[0] == 0 || req_cnt[1] == 0 || req_cnt[2] != 1)
+	if (cnts.c_cnt == 0 || cnts.e_cnt == 0 || cnts.p_cnt != 1)
 		return (-1);
 	return (0);
 }

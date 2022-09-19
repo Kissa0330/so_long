@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 14:26:42 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:42:05 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,11 @@ t_map	map_read(int fd)
 		read_map_and_free(&map, fd);
 		if (map.map[map.y - 1] != NULL)
 		{
-			if (map.x != (int)ft_strlen(map.map[map.y - 1]) && map.map[map.y - 1] != NULL)
-				error_output();
+			if (map.x != (int)ft_strlen(map.map[map.y - 1]))
+			{
+				if (map.map[map.y - 1] != NULL)
+					error_output();
+			}
 			map.x = ft_strlen(map.map[map.y - 1]);
 		}
 	}

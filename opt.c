@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:27:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 20:27:59 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:30:52 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	judge_square(t_vars *vars, t_map *map)
 	if (map->map[vars->ply_y - 1][vars->ply_x - 1] == 'C')
 	{
 		overwrite_bg(vars, vars->ply_x - 1, vars->ply_y - 1);
-		vars->C_cnt --;
+		vars->c_cnt --;
 		map->map[vars->ply_y - 1][vars->ply_x - 1] = '0';
 	}
-	if (map->map[vars->ply_y - 1][vars->ply_x - 1] == 'E' && vars->C_cnt == 0)
+	if (map->map[vars->ply_y - 1][vars->ply_x - 1] == 'E' && vars->c_cnt == 0)
 		exit(EXIT_SUCCESS);
 }
 

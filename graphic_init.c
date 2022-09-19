@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:53:32 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 20:25:30 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 20:38:59 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,36 @@ void	create_bg(t_vars vars)
 	mlx_destroy_image(vars.mlx, img.img);
 }
 
+static void	draw_elements(t_vars *vars, char map, int i, int j)
+{
+	void	*img;
+	int		w;
+	int		h;
+
+	img = NULL;
+	if (map == '1')
+		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Cliff.xpm", &w, &h);
+	else if (map == 'P')
+	{
+		vars->ply_x = j + 1;
+		vars->ply_y = i + 1;
+		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/GCrab.xpm", &w, &h);
+	}
+	else if (map == 'C')
+	{
+		vars->c_cnt ++;
+		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Chest.xpm", &w, &h);
+	}
+	else if (map == 'E')
+		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Portal.xpm", &w, &h);
+	mlx_put_image_to_window(vars->mlx, vars->win, img, j * 16, i * 16);
+	mlx_destroy_image(vars->mlx, img);
+}
+
 void	draw_map(t_vars *vars, t_map map)
 {
 	int		i;
 	int		j;
-	void	*img;
-	int		w;
-	int		h;
 
 	i = 0;
 	while (map.map[i] != NULL)
@@ -49,29 +72,9 @@ void	draw_map(t_vars *vars, t_map map)
 		j = 0;
 		while (j < map.x)
 		{
-			if (map.map[i][j] == '0')
-			{
-				j ++;
-				continue ;
-			}
-			if (map.map[i][j] == '1')
-				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Cliff.xpm", &w, &h);
-			else if (map.map[i][j] == 'P')
-			{
-				vars->ply_x = j + 1;
-				vars->ply_y = i + 1;
-				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/GCrab.xpm", &w, &h);
-			}
-			else if (map.map[i][j] == 'C')
-			{
-				vars->C_cnt ++;
-				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Chest.xpm", &w, &h);
-			}
-			else if (map.map[i][j] == 'E')
-				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Portal.xpm", &w, &h);
-			mlx_put_image_to_window(vars->mlx, vars->win, img, j * 16, i * 16);
+			if (map.map[i][j] != '0')
+				draw_elements(vars, map.map[i][j], i, j);
 			j ++;
-			mlx_destroy_image(vars->mlx, img);
 		}
 		i ++;
 	}
