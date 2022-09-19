@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 21:15:06 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 23:36:48 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ static void	map_check(t_map map)
 		error_output();
 	if (map_required_check(map) == -1)
 		error_output();
-	// if (map_is_goal_check(map) == -1)
-	// 	error_output();
 }
 
 t_map	map_read(int fd)

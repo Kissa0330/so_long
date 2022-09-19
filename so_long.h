@@ -6,14 +6,14 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 20:29:40 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 20:56:33 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 23:35:46 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx.h"
+# include "./minilibx_opengl/mlx.h"
 # include "./libft/libft.h"
 # include <stdlib.h>
 # include <fcntl.h>
