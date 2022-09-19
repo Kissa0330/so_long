@@ -49,5 +49,6 @@ void	move_right(t_vars *vars, t_map map);
 void	move_down(t_vars *vars, t_map map);
 void	overwrite_bg(t_vars *vars, int x, int y);
 void	draw_ply(t_vars vars, int x, int y);
+void	draw_exit(t_vars vars, int x, int y);
 
 #endif

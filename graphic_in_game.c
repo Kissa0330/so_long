@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:44:50 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 19:12:21 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 19:38:21 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	draw_ply(t_vars vars, int x, int y)
 	int		h;
 
 	img = mlx_xpm_file_to_image(vars.mlx, "./xpm/GCrab.xpm", &w, &h);
+	mlx_put_image_to_window(vars.mlx, vars.win, img, (x - 1) * 16, (y - 1) * 16);
+	mlx_destroy_image(vars.mlx, img);
+}
+
+void	draw_exit(t_vars vars, int x, int y)
+{
+	void	*img;
+	int		w;
+	int		h;
+
+	img = mlx_xpm_file_to_image(vars.mlx, "./xpm/Portal.xpm", &w, &h);
 	mlx_put_image_to_window(vars.mlx, vars.win, img, (x - 1) * 16, (y - 1) * 16);
 	mlx_destroy_image(vars.mlx, img);
 }
