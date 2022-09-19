@@ -9,6 +9,12 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct	s_map {
+	char	**map;
+	int		x;
+	int		y;
+}				t_map;
+
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -16,13 +22,8 @@ typedef struct	s_vars {
 	int		y;
 	int		ply_x;
 	int		ply_y;
+	t_map	map;
 }				t_vars;
-
-typedef struct	s_map {
-	char	**map;
-	int		x;
-	int		y;
-}				t_map;
 
 # include "mlx.h"
 # include "./libft/libft.h"
@@ -38,5 +39,8 @@ void	error_output();
 int		close_win(t_vars *vars);
 t_map	map_read(int fd);
 int		path_check(char *path);
+int		map_wall_check(t_map map);
+int		map_required_check(t_map map);
+void	move_up(t_vars *vars, t_map map);
 
 #endif
