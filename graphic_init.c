@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:53:32 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 10:44:00 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/19 18:55:09 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,23 @@ void	draw_map(t_vars *vars, t_map map)
 				continue;
 			}
 			if (map.map[i][j] == '1')
-				img = mlx_xpm_file_to_image((*vars).mlx, "./xpm/Cliff.xpm", &w, &h);
+				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Cliff.xpm", &w, &h);
 			else if (map.map[i][j] == 'P')
 			{
-				(*vars).ply_x = j + 1;
-				(*vars).ply_y = i + 1;
-				img = mlx_xpm_file_to_image((*vars).mlx, "./xpm/GCrab.xpm", &w, &h);
+				vars->ply_x = j + 1;
+				vars->ply_y = i + 1;
+				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/GCrab.xpm", &w, &h);
 			}
 			else if (map.map[i][j] == 'C')
-				img = mlx_xpm_file_to_image((*vars).mlx, "./xpm/Chest.xpm", &w, &h);
+			{
+				vars->C_cnt ++;
+				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Chest.xpm", &w, &h);
+			}
 			else if (map.map[i][j] == 'E')
-				img = mlx_xpm_file_to_image((*vars).mlx, "./xpm/Portal.xpm", &w, &h);
-			mlx_put_image_to_window((*vars).mlx, (*vars).win, img, j * 16, i * 16);
+				img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Portal.xpm", &w, &h);
+			mlx_put_image_to_window(vars->mlx, vars->win, img, j * 16, i * 16);
 			j ++;
-			mlx_destroy_image((*vars).mlx, img);
+			mlx_destroy_image(vars->mlx, img);
 		}
 		i ++;
 	}

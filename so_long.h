@@ -22,6 +22,7 @@ typedef struct	s_vars {
 	int		y;
 	int		ply_x;
 	int		ply_y;
+	int		C_cnt;
 	t_map	map;
 }				t_vars;
 
