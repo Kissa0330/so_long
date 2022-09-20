@@ -2,7 +2,7 @@ NAME = so_long
 SRCS = main.c event.c opt.c map.c utils.c graphic_init.c graphic_in_game.c error_check.c map_error_check.c
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-#  -fsanitize=address
+#-fsanitize=address
 
 .PHONY : all clean fclean re
 
