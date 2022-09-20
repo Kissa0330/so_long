@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 13:42:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/20 17:51:50 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/20 17:57:25 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 	t_vars	vars;
 
 	if (argc != 2)
-	 	error_output();
+		error_output();
 	vars_init(&vars, argv[1]);
 	create_bg(vars);
 	draw_map(&vars, vars.map);

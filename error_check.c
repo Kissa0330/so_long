@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 10:46:11 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/20 17:54:03 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/20 17:57:17 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	path_check(char *path)
 		{
 			if (ft_strncmp(&path[i], ".ber", 5) != 0)
 				return (-1);
-			else 
+			else
 				return (0);
 		}
 		i --;
