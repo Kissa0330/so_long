@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:25:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/20 18:00:47 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/22 19:26:31 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	map_wall_check(t_map map)
 			if (map.map[i][j] != '1')
 				return (-1);
 			j++;
-			if (i != 0 && i != map.y - 1 && j == 1)
+			if (i != 0 && i != map.y - 2 && j == 1)
 				j = map.x - 1;
 		}
 		i ++;
