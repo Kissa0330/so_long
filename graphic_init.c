@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:53:32 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/20 16:03:38 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/22 19:55:20 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	draw_elements(t_vars *vars, char map, int i, int j)
 	int		w;
 	int		h;
 
-	img = NULL;
 	if (map == '1')
 		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Cliff.xpm", &w, &h);
 	else if (map == 'P')
@@ -57,6 +56,8 @@ static void	draw_elements(t_vars *vars, char map, int i, int j)
 	}
 	else if (map == 'E')
 		img = mlx_xpm_file_to_image(vars->mlx, "./xpm/Portal.xpm", &w, &h);
+	else
+		return ;
 	mlx_put_image_to_window(vars->mlx, vars->win, img, j * 16, i * 16);
 	mlx_destroy_image(vars->mlx, img);
 }
