@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 20:29:40 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 23:35:46 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/22 22:41:04 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	draw_map(t_vars *vars, t_map map);
 void	event_hooks(t_vars vars);
 int		key_press_event(int keycode, t_vars *vars);
 void	error_output(void);
-int		close_win(t_vars *vars);
+int		close_win(void);
 t_map	map_read(int fd);
 int		path_check(char *path);
 int		map_wall_check(t_map map);

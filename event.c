@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:27:48 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/19 19:20:00 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/22 22:40:52 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	event_hooks(t_vars vars)
 int	key_press_event(int keycode, t_vars *vars)
 {
 	if (keycode == 53)
-		close_win(vars);
+		close_win();
 	else if (keycode == 13)
 		move_up(vars, vars->map);
 	else if (keycode == 0)
@@ -33,9 +33,8 @@ int	key_press_event(int keycode, t_vars *vars)
 	return (0);
 }
 
-int	close_win(t_vars *vars)
+int	close_win(void)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
