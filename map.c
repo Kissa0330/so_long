@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 16:26:37 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/09/22 19:37:04 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/09/22 19:42:42 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,25 @@ static void	read_map_and_free(t_map *map, int fd)
 	map->map = tmp;
 }
 
-static void	map_check(t_map map)
+static void	map_read_and_check(t_map *map, int fd)
 {
-	if (map_wall_check(map) == -1)
+	while (map->map[map->y - 1] != NULL)
+	{
+		map->y ++;
+		read_map_and_free(map, fd);
+		if (map->map[map->y - 1] != NULL)
+		{
+			if (map->x != (int)ft_strlen(map->map[map->y - 1]))
+			{
+				if (map->map[map->y - 1] != NULL)
+					error_output();
+			}
+			map->x = ft_strlen(map->map[map->y - 1]);
+		}
+	}
+	if (map_wall_check(*map) == -1)
 		error_output();
-	if (map_required_check(map) == -1)
+	if (map_required_check(*map) == -1)
 		error_output();
 }
 
@@ -67,20 +81,6 @@ t_map	map_read(int fd)
 	if (ft_strlen((const char *)map.map[map.y - 1]) > INT_MAX)
 		error_output();
 	map.x = ft_strlen((const char *)map.map[map.y - 1]);
-	while (map.map[map.y - 1] != NULL)
-	{
-		map.y ++;
-		read_map_and_free(&map, fd);
-		if (map.map[map.y - 1] != NULL)
-		{
-			if (map.x != (int)ft_strlen(map.map[map.y - 1]))
-			{
-				if (map.map[map.y - 1] != NULL)
-					error_output();
-			}
-			map.x = ft_strlen(map.map[map.y - 1]);
-		}
-	}
-	map_check(map);
+	map_read_and_check(&map, fd);
 	return (map);
 }
